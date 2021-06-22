@@ -6,7 +6,7 @@ PHP Library used to update laravel project automatically upon receiving Git even
 
 Requirements:
 
-- Composer
+- Composer 2
 - PHP 7.2
 
 ```bash
