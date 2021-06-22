@@ -1,0 +1,37 @@
+{
+    "name": "rollswan/laravel-project-updater",
+    "description": "PHP Library used to update laravel project automatically upon receiving Git events.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rollswan Acebedo",
+            "email": "rollswanacebedo@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "laravel/framework": "~7",
+        "guzzlehttp/guzzle": "^6.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rollswan\\LaravelProjectUpdater\\UpdaterServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Rollswan\\LaravelProjectUpdater\\": "src/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize",
+            "php artisan vendor:publish --tag=config"
+        ]
+    },
+    "minimum-stability": "dev"
+}
