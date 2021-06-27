@@ -8,6 +8,16 @@ use Rollswan\LaravelProjectUpdater\Middleware\UpdaterMiddleware;
 class UpdaterServiceProvider extends ServiceProvider
 {
     /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+    
+    /**
      * Bootstrap any application services.
      *
      * @return void
