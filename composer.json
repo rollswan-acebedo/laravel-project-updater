@@ -22,7 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Rollswan\\LaravelProjectUpdater\\": "src/"
+            "Rollswan\\LaravelProjectUpdater\\": "src/",
+            "Rollswan\\LaravelProjectUpdater\\Controllers\\": "src/Controllers/",
+            "Rollswan\\LaravelProjectUpdater\\Helpers\\": "src/Helpers/",
+            "Rollswan\\LaravelProjectUpdater\\Jobs\\": "src/Jobs/",
+            "Rollswan\\LaravelProjectUpdater\\Middleware\\": "src/Middleware/",
+            "Rollswan\\LaravelProjectUpdater\\Providers\\": "src/Providers/"
         }
     },
     "scripts": {
