@@ -44,8 +44,12 @@ class UpdaterJob implements ShouldQueue
                 $errors = implode("\n", $result);
 
                 // Error response
-                ResponseHelper::postToWebhook("An error was encountered while trying to update the server: {$errors}");
-                return ResponseHelper::make(500, "Error trying to run command: {$command}");
+                ResponseHelper::postToWebhook("An error was encountered while trying to update the server: ", <<<EOF
+                ```
+                {$errors}
+                ```
+                EOF);
+                ResponseHelper::make(500, "Error trying to run command: " . config('lpu.commands'. $configCommand));
             }
         }
 
@@ -53,7 +57,7 @@ class UpdaterJob implements ShouldQueue
         if ($noErrorFound) {
             // Success response
             ResponseHelper::postToWebhook('The server was successfully updated.');
-            return ResponseHelper::make(200, "Update successful.");
+            ResponseHelper::make(200, "Update successful.");
         }
     }
 }
