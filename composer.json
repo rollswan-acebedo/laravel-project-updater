@@ -11,8 +11,7 @@
     ],
     "require": {
         "php": "^7.2",
-        "laravel/framework": "~7",
-        "guzzlehttp/guzzle": "^6.5"
+        "laravel/framework": "~7"
     },
     "extra": {
         "laravel": {
