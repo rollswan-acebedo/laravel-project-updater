@@ -16,7 +16,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Rollswan\\LaravelProjectUpdater\\UpdaterServiceProvider"
+                "Rollswan\\LaravelProjectUpdater\\Providers\\UpdaterServiceProvider"
             ]
         }
     },
