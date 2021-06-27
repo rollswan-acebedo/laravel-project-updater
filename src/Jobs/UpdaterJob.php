@@ -41,26 +41,18 @@ class UpdaterJob implements ShouldQueue
             // Notify error result
             if ($resultCode !== 0) {
                 $noErrorFound = false;
-                $errors = implode("\n", $result);
 
                 // Error response
-                ResponseHelper::make(500, "Error trying to run command");
-                ResponseHelper::postToWebhook('An error was encountered while trying to update the server: ' . <<<EOF
-                ```
-                {$errors}
-                ```
-                EOF);
-
-                // Break loop
-                break;
+                ResponseHelper::postToWebhook("An error was encountered while trying to update the server: {$result[0]}");
+                return ResponseHelper::make(500, "Error trying to run command: {$command}");
             }
         }
 
         // Check if no error found
         if ($noErrorFound) {
             // Success response
-            ResponseHelper::make(200, "Update successful.");
             ResponseHelper::postToWebhook('The server was successfully updated.');
+            return ResponseHelper::make(200, "Update successful.");
         }
     }
 }
