@@ -36,7 +36,7 @@ class UpdaterJob implements ShouldQueue
 
         foreach ($this->configCommands as $configCommand => $command) {
             // Execute config command
-            exec('cd '. base_path() . ' && ' . $command, $result, $resultCode);
+            exec('cd '. base_path() . ' && ' . $command . ' 2>&1', $result, $resultCode);
 
             // Notify error result
             if ($resultCode !== 0) {
@@ -49,14 +49,17 @@ class UpdaterJob implements ShouldQueue
                 {$errors}
                 ```
                 EOF);
-                ResponseHelper::make(500, "Error trying to run command: " . config('lpu.commands'. $configCommand));
+                ResponseHelper::make(500, "Error trying to run command: `{$command}`");
+
+                // Break loop
+                break;
             }
         }
 
         // Check if no error found
         if ($noErrorFound) {
             // Success response
-            ResponseHelper::postToWebhook('The server was successfully updated.');
+            ResponseHelper::postToWebhook("The server was successfully updated.");
             ResponseHelper::make(200, "Update successful.");
         }
     }

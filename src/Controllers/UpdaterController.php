@@ -17,6 +17,6 @@ class UpdaterController extends Controller
         $configCommands = config('lpu.commands');
 
         // Dispatch jobs
-        return UpdaterJob::dispatch($configCommands);
+        UpdaterJob::dispatch($configCommands);
     }
 }
